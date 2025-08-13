@@ -3,319 +3,114 @@
 <html lang="si">
 <head>
   <meta charset="UTF-8">
-  <title>දේශපාලන හැසිරීම් පරික්ෂණය</title>
+  <title>ඔබ කවුද? ජෙබයියාද? බයියාද?</title>
   <style>
-    body { font-family: sans-serif; padding: 20px; background: #f9f9f9; }
-    .question { margin: 20px 0; }
-    .result { font-size: 24px; font-weight: bold; color: #006600; margin-top: 30px; }
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      padding: 30px;
+      background: #fff8e1;
+      color: #212121;
+      text-align: center;
+    }
+    .question-box {
+      margin: 40px auto;
+      background: #fff3e0;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      max-width: 700px;
+    }
+    h2 {
+      font-size: 26px;
+      color: #ff6f00;
+    }
+    #question {
+      font-size: 22px;
+      margin-bottom: 30px;
+    }
+    input[type=range] {
+      width: 100%;
+      margin: 30px 0;
+    }
+    .labels {
+      display: flex;
+      justify-content: space-between;
+      font-weight: bold;
+      font-size: 14px;
+    }
+    button {
+      background-color: #ff5722;
+      color: white;
+      border: none;
+      padding: 15px 30px;
+      font-size: 16px;
+      border-radius: 8px;
+      cursor: pointer;
+      margin-top: 30px;
+    }
+    .result {
+      font-size: 28px;
+      font-weight: bold;
+      color: #1b5e20;
+      margin-top: 40px;
+      padding: 20px;
+      background: #c8e6c9;
+      border-radius: 12px;
+      display: none;
+    }
   </style>
 </head>
 <body>
-  <h2>🗳️ ඔබේ දේශපාලන ස්ථානය සොයා බලමු</h2>
-  <form id="quizForm">
-<div class="question"><p>1. රජය ජනතාවගේ හැම ක්‍රියාවකටම නියාමනය නොකළ යුතුය.</p>
-<label><input type="radio" name="q0" value="2" required> බලවත් ලෙස එකඟයි</label><br>
-<label><input type="radio" name="q0" value="1" required> එකඟයි</label><br>
-<label><input type="radio" name="q0" value="0" required> නැවත සලකා බැලිය යුතුයි</label><br>
-<label><input type="radio" name="q0" value="-1" required> එකඟ නැත</label><br>
-<label><input type="radio" name="q0" value="-2" required> බලවත් ලෙස එකඟ නැත</label><br>
-</div>
-<div class="question"><p>2. ජනතා විරෝධතාවයන්ට අවසර දිය යුතුය, එය ජනපද සාධාරණත්වයකි.</p>
-<label><input type="radio" name="q1" value="2" required> බලවත් ලෙස එකඟයි</label><br>
-<label><input type="radio" name="q1" value="1" required> එකඟයි</label><br>
-<label><input type="radio" name="q1" value="0" required> නැවත සලකා බැලිය යුතුයි</label><br>
-<label><input type="radio" name="q1" value="-1" required> එකඟ නැත</label><br>
-<label><input type="radio" name="q1" value="-2" required> බලවත් ලෙස එකඟ නැත</label><br>
-</div>
-<div class="question"><p>3. විපක්ෂයේ අදහස් වළක්වන්නට කිසිදු රටකට අයිතියක් නැහැ.</p>
-<label><input type="radio" name="q2" value="2" required> බලවත් ලෙස එකඟයි</label><br>
-<label><input type="radio" name="q2" value="1" required> එකඟයි</label><br>
-<label><input type="radio" name="q2" value="0" required> නැවත සලකා බැලිය යුතුයි</label><br>
-<label><input type="radio" name="q2" value="-1" required> එකඟ නැත</label><br>
-<label><input type="radio" name="q2" value="-2" required> බලවත් ලෙස එකඟ නැත</label><br>
-</div>
-<div class="question"><p>4. ජාතික ආරක්ෂාව වෙනුවෙන් සීමිත මාධ්‍ය නිදහසක් වැදගත් වේ.</p>
-<label><input type="radio" name="q3" value="2" required> බලවත් ලෙස එකඟයි</label><br>
-<label><input type="radio" name="q3" value="1" required> එකඟයි</label><br>
-<label><input type="radio" name="q3" value="0" required> නැවත සලකා බැලිය යුතුයි</label><br>
-<label><input type="radio" name="q3" value="-1" required> එකඟ නැත</label><br>
-<label><input type="radio" name="q3" value="-2" required> බලවත් ලෙස එකඟ නැත</label><br>
-</div>
-<div class="question"><p>5. ජනතා බලය වඩාත්ම ප්‍රබල විය යුතුය – නියෝජිතයන්ට නොවේ.</p>
-<label><input type="radio" name="q4" value="2" required> බලවත් ලෙස එකඟයි</label><br>
-<label><input type="radio" name="q4" value="1" required> එකඟයි</label><br>
-<label><input type="radio" name="q4" value="0" required> නැවත සලකා බැලිය යුතුයි</label><br>
-<label><input type="radio" name="q4" value="-1" required> එකඟ නැත</label><br>
-<label><input type="radio" name="q4" value="-2" required> බලවත් ලෙස එකඟ නැත</label><br>
-</div>
-<div class="question"><p>6. රජයේ බලය තරමක් දැඩි විය යුතුය සමාජය ආරක්ෂා කිරීම සඳහා.</p>
-<label><input type="radio" name="q5" value="2" required> බලවත් ලෙස එකඟයි</label><br>
-<label><input type="radio" name="q5" value="1" required> එකඟයි</label><br>
-<label><input type="radio" name="q5" value="0" required> නැවත සලකා බැලිය යුතුයි</label><br>
-<label><input type="radio" name="q5" value="-1" required> එකඟ නැත</label><br>
-<label><input type="radio" name="q5" value="-2" required> බලවත් ලෙස එකඟ නැත</label><br>
-</div>
-<div class="question"><p>7. තීරණාත්මක තත්වවලදී හමුදාවට බහුතර බලය තිබිය යුතුය.</p>
-<label><input type="radio" name="q6" value="2" required> බලවත් ලෙස එකඟයි</label><br>
-<label><input type="radio" name="q6" value="1" required> එකඟයි</label><br>
-<label><input type="radio" name="q6" value="0" required> නැවත සලකා බැලිය යුතුයි</label><br>
-<label><input type="radio" name="q6" value="-1" required> එකඟ නැත</label><br>
-<label><input type="radio" name="q6" value="-2" required> බලවත් ලෙස එකඟ නැත</label><br>
-</div>
-<div class="question"><p>8. විදේශිකයන්ට දේශපාලන බලපෑම් දැරීමට අවසර නොදිය යුතුය.</p>
-<label><input type="radio" name="q7" value="2" required> බලවත් ලෙස එකඟයි</label><br>
-<label><input type="radio" name="q7" value="1" required> එකඟයි</label><br>
-<label><input type="radio" name="q7" value="0" required> නැවත සලකා බැලිය යුතුයි</label><br>
-<label><input type="radio" name="q7" value="-1" required> එකඟ නැත</label><br>
-<label><input type="radio" name="q7" value="-2" required> බලවත් ලෙස එකඟ නැත</label><br>
-</div>
-<div class="question"><p>9. ශිෂ්ටාචාර, සාම්ප්‍රදාය, සහ ආගම රැකගැනීම ජාතික වගකීමකි.</p>
-<label><input type="radio" name="q8" value="2" required> බලවත් ලෙස එකඟයි</label><br>
-<label><input type="radio" name="q8" value="1" required> එකඟයි</label><br>
-<label><input type="radio" name="q8" value="0" required> නැවත සලකා බැලිය යුතුයි</label><br>
-<label><input type="radio" name="q8" value="-1" required> එකඟ නැත</label><br>
-<label><input type="radio" name="q8" value="-2" required> බලවත් ලෙස එකඟ නැත</label><br>
-</div>
-<div class="question"><p>10. විදේශ සංස්කෘතික බලපෑම්වලට අපේ ළමුන් අනාවරණය විය යුතු නැහැ.</p>
-<label><input type="radio" name="q9" value="2" required> බලවත් ලෙස එකඟයි</label><br>
-<label><input type="radio" name="q9" value="1" required> එකඟයි</label><br>
-<label><input type="radio" name="q9" value="0" required> නැවත සලකා බැලිය යුතුයි</label><br>
-<label><input type="radio" name="q9" value="-1" required> එකඟ නැත</label><br>
-<label><input type="radio" name="q9" value="-2" required> බලවත් ලෙස එකඟ නැත</label><br>
-</div>
-<div class="question"><p>11. ජාතියට අනුව විශේෂ ආරක්ෂාවක් තිබිය යුතුද? ඔව්.</p>
-<label><input type="radio" name="q10" value="2" required> බලවත් ලෙස එකඟයි</label><br>
-<label><input type="radio" name="q10" value="1" required> එකඟයි</label><br>
-<label><input type="radio" name="q10" value="0" required> නැවත සලකා බැලිය යුතුයි</label><br>
-<label><input type="radio" name="q10" value="-1" required> එකඟ නැත</label><br>
-<label><input type="radio" name="q10" value="-2" required> බලවත් ලෙස එකඟ නැත</label><br>
-</div>
-<div class="question"><p>12. සෑම මතභේදයකටම තර්ක සාධක සහභාගී විය යුතුය.</p>
-<label><input type="radio" name="q11" value="2" required> බලවත් ලෙස එකඟයි</label><br>
-<label><input type="radio" name="q11" value="1" required> එකඟයි</label><br>
-<label><input type="radio" name="q11" value="0" required> නැවත සලකා බැලිය යුතුයි</label><br>
-<label><input type="radio" name="q11" value="-1" required> එකඟ නැත</label><br>
-<label><input type="radio" name="q11" value="-2" required> බලවත් ලෙස එකඟ නැත</label><br>
-</div>
-<div class="question"><p>13. සිංහල භාෂාවටම මුල් තැන ලබා දිය යුතුය.</p>
-<label><input type="radio" name="q12" value="2" required> බලවත් ලෙස එකඟයි</label><br>
-<label><input type="radio" name="q12" value="1" required> එකඟයි</label><br>
-<label><input type="radio" name="q12" value="0" required> නැවත සලකා බැලිය යුතුයි</label><br>
-<label><input type="radio" name="q12" value="-1" required> එකඟ නැත</label><br>
-<label><input type="radio" name="q12" value="-2" required> බලවත් ලෙස එකඟ නැත</label><br>
-</div>
-<div class="question"><p>14. දෙමළ සහ මුස්ලිම් ජනතාවට වඩාද රටේ තීරණ ගැනීමේ බලය සිංහලයන්ට තිබිය යුතුද?</p>
-<label><input type="radio" name="q13" value="2" required> බලවත් ලෙස එකඟයි</label><br>
-<label><input type="radio" name="q13" value="1" required> එකඟයි</label><br>
-<label><input type="radio" name="q13" value="0" required> නැවත සලකා බැලිය යුතුයි</label><br>
-<label><input type="radio" name="q13" value="-1" required> එකඟ නැත</label><br>
-<label><input type="radio" name="q13" value="-2" required> බලවත් ලෙස එකඟ නැත</label><br>
-</div>
-<div class="question"><p>15. සිංහල බෞද්ධයන්ට විශේෂ තත්ත්වයක් තිබිය යුතුයි.</p>
-<label><input type="radio" name="q14" value="2" required> බලවත් ලෙස එකඟයි</label><br>
-<label><input type="radio" name="q14" value="1" required> එකඟයි</label><br>
-<label><input type="radio" name="q14" value="0" required> නැවත සලකා බැලිය යුතුයි</label><br>
-<label><input type="radio" name="q14" value="-1" required> එකඟ නැත</label><br>
-<label><input type="radio" name="q14" value="-2" required> බලවත් ලෙස එකඟ නැත</label><br>
-</div>
-<div class="question"><p>16. වඳභාවය පාලනය සහ විවාහ රේගුලාසි රජය මගින් නියාමනය කළ යුතුයි.</p>
-<label><input type="radio" name="q15" value="2" required> බලවත් ලෙස එකඟයි</label><br>
-<label><input type="radio" name="q15" value="1" required> එකඟයි</label><br>
-<label><input type="radio" name="q15" value="0" required> නැවත සලකා බැලිය යුතුයි</label><br>
-<label><input type="radio" name="q15" value="-1" required> එකඟ නැත</label><br>
-<label><input type="radio" name="q15" value="-2" required> බලවත් ලෙස එකඟ නැත</label><br>
-</div>
-<div class="question"><p>17. බෞද්ධ ආගම රැක ගැනීම රජයේ වගකීමකි.</p>
-<label><input type="radio" name="q16" value="2" required> බලවත් ලෙස එකඟයි</label><br>
-<label><input type="radio" name="q16" value="1" required> එකඟයි</label><br>
-<label><input type="radio" name="q16" value="0" required> නැවත සලකා බැලිය යුතුයි</label><br>
-<label><input type="radio" name="q16" value="-1" required> එකඟ නැත</label><br>
-<label><input type="radio" name="q16" value="-2" required> බලවත් ලෙස එකඟ නැත</label><br>
-</div>
-<div class="question"><p>18. ආගමික නීති රටේ නීතිවලට වඩා බලවත් විය යුතුය.</p>
-<label><input type="radio" name="q17" value="2" required> බලවත් ලෙස එකඟයි</label><br>
-<label><input type="radio" name="q17" value="1" required> එකඟයි</label><br>
-<label><input type="radio" name="q17" value="0" required> නැවත සලකා බැලිය යුතුයි</label><br>
-<label><input type="radio" name="q17" value="-1" required> එකඟ නැත</label><br>
-<label><input type="radio" name="q17" value="-2" required> බලවත් ලෙස එකඟ නැත</label><br>
-</div>
-<div class="question"><p>19. දෙවියන් පිළිබඳ විශ්වාසයක් නැති අය මිනිස් සමාජයට වියරුකමක්.</p>
-<label><input type="radio" name="q18" value="2" required> බලවත් ලෙස එකඟයි</label><br>
-<label><input type="radio" name="q18" value="1" required> එකඟයි</label><br>
-<label><input type="radio" name="q18" value="0" required> නැවත සලකා බැලිය යුතුයි</label><br>
-<label><input type="radio" name="q18" value="-1" required> එකඟ නැත</label><br>
-<label><input type="radio" name="q18" value="-2" required> බලවත් ලෙස එකඟ නැත</label><br>
-</div>
-<div class="question"><p>20. ආගමික නායකයන්ට දේශපාලන අදහස් පළ කළ යුතුද? ඔව්.</p>
-<label><input type="radio" name="q19" value="2" required> බලවත් ලෙස එකඟයි</label><br>
-<label><input type="radio" name="q19" value="1" required> එකඟයි</label><br>
-<label><input type="radio" name="q19" value="0" required> නැවත සලකා බැලිය යුතුයි</label><br>
-<label><input type="radio" name="q19" value="-1" required> එකඟ නැත</label><br>
-<label><input type="radio" name="q19" value="-2" required> බලවත් ලෙස එකඟ නැත</label><br>
-</div>
-<div class="question"><p>21. එකිනෙකාගේ ආගමට ගරු කළ යුතුද? ඔව්.</p>
-<label><input type="radio" name="q20" value="2" required> බලවත් ලෙස එකඟයි</label><br>
-<label><input type="radio" name="q20" value="1" required> එකඟයි</label><br>
-<label><input type="radio" name="q20" value="0" required> නැවත සලකා බැලිය යුතුයි</label><br>
-<label><input type="radio" name="q20" value="-1" required> එකඟ නැත</label><br>
-<label><input type="radio" name="q20" value="-2" required> බලවත් ලෙස එකඟ නැත</label><br>
-</div>
-<div class="question"><p>22. ආගමික නීතිවලට අනුව දඬුවම් ක්‍රමයන් ක්‍රියාත්මක කළ යුතුද?</p>
-<label><input type="radio" name="q21" value="2" required> බලවත් ලෙස එකඟයි</label><br>
-<label><input type="radio" name="q21" value="1" required> එකඟයි</label><br>
-<label><input type="radio" name="q21" value="0" required> නැවත සලකා බැලිය යුතුයි</label><br>
-<label><input type="radio" name="q21" value="-1" required> එකඟ නැත</label><br>
-<label><input type="radio" name="q21" value="-2" required> බලවත් ලෙස එකඟ නැත</label><br>
-</div>
-<div class="question"><p>23. ධනවත් අය වැඩි බදු ගෙවිය යුතුය.</p>
-<label><input type="radio" name="q22" value="2" required> බලවත් ලෙස එකඟයි</label><br>
-<label><input type="radio" name="q22" value="1" required> එකඟයි</label><br>
-<label><input type="radio" name="q22" value="0" required> නැවත සලකා බැලිය යුතුයි</label><br>
-<label><input type="radio" name="q22" value="-1" required> එකඟ නැත</label><br>
-<label><input type="radio" name="q22" value="-2" required> බලවත් ලෙස එකඟ නැත</label><br>
-</div>
-<div class="question"><p>24. සමාජයම එකට කම් කරන ආකාරයෙන් සම්පත් බෙදාගත යුතුය.</p>
-<label><input type="radio" name="q23" value="2" required> බලවත් ලෙස එකඟයි</label><br>
-<label><input type="radio" name="q23" value="1" required> එකඟයි</label><br>
-<label><input type="radio" name="q23" value="0" required> නැවත සලකා බැලිය යුතුයි</label><br>
-<label><input type="radio" name="q23" value="-1" required> එකඟ නැත</label><br>
-<label><input type="radio" name="q23" value="-2" required> බලවත් ලෙස එකඟ නැත</label><br>
-</div>
-<div class="question"><p>25. පෞද්ගලික ව්‍යාපාරික නිදහස ආර්ථිකයේ පදනම විය යුතුය.</p>
-<label><input type="radio" name="q24" value="2" required> බලවත් ලෙස එකඟයි</label><br>
-<label><input type="radio" name="q24" value="1" required> එකඟයි</label><br>
-<label><input type="radio" name="q24" value="0" required> නැවත සලකා බැලිය යුතුයි</label><br>
-<label><input type="radio" name="q24" value="-1" required> එකඟ නැත</label><br>
-<label><input type="radio" name="q24" value="-2" required> බලවත් ලෙස එකඟ නැත</label><br>
-</div>
-<div class="question"><p>26. විදේශ ආයෝජන වලට විශේෂ වරප්‍රසාද නොලැබිය යුතුය.</p>
-<label><input type="radio" name="q25" value="2" required> බලවත් ලෙස එකඟයි</label><br>
-<label><input type="radio" name="q25" value="1" required> එකඟයි</label><br>
-<label><input type="radio" name="q25" value="0" required> නැවත සලකා බැලිය යුතුයි</label><br>
-<label><input type="radio" name="q25" value="-1" required> එකඟ නැත</label><br>
-<label><input type="radio" name="q25" value="-2" required> බලවත් ලෙස එකඟ නැත</label><br>
-</div>
-<div class="question"><p>27. රාජ්‍ය ව්‍යාපාර පෞද්ගලික ක්ෂේත්‍රයට පවරා යළි සංවිධානය කළ යුතුය.</p>
-<label><input type="radio" name="q26" value="2" required> බලවත් ලෙස එකඟයි</label><br>
-<label><input type="radio" name="q26" value="1" required> එකඟයි</label><br>
-<label><input type="radio" name="q26" value="0" required> නැවත සලකා බැලිය යුතුයි</label><br>
-<label><input type="radio" name="q26" value="-1" required> එකඟ නැත</label><br>
-<label><input type="radio" name="q26" value="-2" required> බලවත් ලෙස එකඟ නැත</label><br>
-</div>
-<div class="question"><p>28. කුඩා ව්‍යාපාර සඳහා වැඩි වරප්‍රසාද තිබිය යුතුය.</p>
-<label><input type="radio" name="q27" value="2" required> බලවත් ලෙස එකඟයි</label><br>
-<label><input type="radio" name="q27" value="1" required> එකඟයි</label><br>
-<label><input type="radio" name="q27" value="0" required> නැවත සලකා බැලිය යුතුයි</label><br>
-<label><input type="radio" name="q27" value="-1" required> එකඟ නැත</label><br>
-<label><input type="radio" name="q27" value="-2" required> බලවත් ලෙස එකඟ නැත</label><br>
-</div>
-<div class="question"><p>29. ගොවීන්ට රජය නියමිත මිලක් සහ ආධාර ලබා දිය යුතුයි.</p>
-<label><input type="radio" name="q28" value="2" required> බලවත් ලෙස එකඟයි</label><br>
-<label><input type="radio" name="q28" value="1" required> එකඟයි</label><br>
-<label><input type="radio" name="q28" value="0" required> නැවත සලකා බැලිය යුතුයි</label><br>
-<label><input type="radio" name="q28" value="-1" required> එකඟ නැත</label><br>
-<label><input type="radio" name="q28" value="-2" required> බලවත් ලෙස එකඟ නැත</label><br>
-</div>
-<div class="question"><p>30. බදු අඩු කිරීම තුළින් ආර්ථික වර්ධනය වේගවත් කළ හැකියි.</p>
-<label><input type="radio" name="q29" value="2" required> බලවත් ලෙස එකඟයි</label><br>
-<label><input type="radio" name="q29" value="1" required> එකඟයි</label><br>
-<label><input type="radio" name="q29" value="0" required> නැවත සලකා බැලිය යුතුයි</label><br>
-<label><input type="radio" name="q29" value="-1" required> එකඟ නැත</label><br>
-<label><input type="radio" name="q29" value="-2" required> බලවත් ලෙස එකඟ නැත</label><br>
-</div>
-<div class="question"><p>31. සිසුන්ට විචාරශීලී චින්තනය වැඩිදියුණු කිරීම වැදගත්ය.</p>
-<label><input type="radio" name="q30" value="2" required> බලවත් ලෙස එකඟයි</label><br>
-<label><input type="radio" name="q30" value="1" required> එකඟයි</label><br>
-<label><input type="radio" name="q30" value="0" required> නැවත සලකා බැලිය යුතුයි</label><br>
-<label><input type="radio" name="q30" value="-1" required> එකඟ නැත</label><br>
-<label><input type="radio" name="q30" value="-2" required> බලවත් ලෙස එකඟ නැත</label><br>
-</div>
-<div class="question"><p>32. පාසල්වල දරුවන්ට ආගමික ආදර්ශ පදනම් කළ යුතුයි.</p>
-<label><input type="radio" name="q31" value="2" required> බලවත් ලෙස එකඟයි</label><br>
-<label><input type="radio" name="q31" value="1" required> එකඟයි</label><br>
-<label><input type="radio" name="q31" value="0" required> නැවත සලකා බැලිය යුතුයි</label><br>
-<label><input type="radio" name="q31" value="-1" required> එකඟ නැත</label><br>
-<label><input type="radio" name="q31" value="-2" required> බලවත් ලෙස එකඟ නැත</label><br>
-</div>
-<div class="question"><p>33. අධ්‍යාපනයේ ප්‍රධාන අරමුණ විය යුතුය රටට උදව් කරන පුරවැසියෙකු බිහි කිරීම.</p>
-<label><input type="radio" name="q32" value="2" required> බලවත් ලෙස එකඟයි</label><br>
-<label><input type="radio" name="q32" value="1" required> එකඟයි</label><br>
-<label><input type="radio" name="q32" value="0" required> නැවත සලකා බැලිය යුතුයි</label><br>
-<label><input type="radio" name="q32" value="-1" required> එකඟ නැත</label><br>
-<label><input type="radio" name="q32" value="-2" required> බලවත් ලෙස එකඟ නැත</label><br>
-</div>
-<div class="question"><p>34. පෞද්ගලික පාසල්වලට සීමා තැබිය යුතුද? ඔව්.</p>
-<label><input type="radio" name="q33" value="2" required> බලවත් ලෙස එකඟයි</label><br>
-<label><input type="radio" name="q33" value="1" required> එකඟයි</label><br>
-<label><input type="radio" name="q33" value="0" required> නැවත සලකා බැලිය යුතුයි</label><br>
-<label><input type="radio" name="q33" value="-1" required> එකඟ නැත</label><br>
-<label><input type="radio" name="q33" value="-2" required> බලවත් ලෙස එකඟ නැත</label><br>
-</div>
-<div class="question"><p>35. රට ආරක්ෂා කිරීම සඳහා දැඩි නීති අනිවාර්ය වේ.</p>
-<label><input type="radio" name="q34" value="2" required> බලවත් ලෙස එකඟයි</label><br>
-<label><input type="radio" name="q34" value="1" required> එකඟයි</label><br>
-<label><input type="radio" name="q34" value="0" required> නැවත සලකා බැලිය යුතුයි</label><br>
-<label><input type="radio" name="q34" value="-1" required> එකඟ නැත</label><br>
-<label><input type="radio" name="q34" value="-2" required> බලවත් ලෙස එකඟ නැත</label><br>
-</div>
-<div class="question"><p>36. නීතියට වඩා ජාතික අභිමතය වැදගත්ය.</p>
-<label><input type="radio" name="q35" value="2" required> බලවත් ලෙස එකඟයි</label><br>
-<label><input type="radio" name="q35" value="1" required> එකඟයි</label><br>
-<label><input type="radio" name="q35" value="0" required> නැවත සලකා බැලිය යුතුයි</label><br>
-<label><input type="radio" name="q35" value="-1" required> එකඟ නැත</label><br>
-<label><input type="radio" name="q35" value="-2" required> බලවත් ලෙස එකඟ නැත</label><br>
-</div>
-<div class="question"><p>37. සමාජය ආරක්ෂා කිරීම සඳහා මරණ දඬුවම හෝ අධික බලය යෙදිය යුතුයි.</p>
-<label><input type="radio" name="q36" value="2" required> බලවත් ලෙස එකඟයි</label><br>
-<label><input type="radio" name="q36" value="1" required> එකඟයි</label><br>
-<label><input type="radio" name="q36" value="0" required> නැවත සලකා බැලිය යුතුයි</label><br>
-<label><input type="radio" name="q36" value="-1" required> එකඟ නැත</label><br>
-<label><input type="radio" name="q36" value="-2" required> බලවත් ලෙස එකඟ නැත</label><br>
-</div>
-<div class="question"><p>38. කාන්තාවන්ට සහ සුළු ජන කොටස්වලට විශේෂ ආරක්ෂාවක් තිබිය යුතුයි.</p>
-<label><input type="radio" name="q37" value="2" required> බලවත් ලෙස එකඟයි</label><br>
-<label><input type="radio" name="q37" value="1" required> එකඟයි</label><br>
-<label><input type="radio" name="q37" value="0" required> නැවත සලකා බැලිය යුතුයි</label><br>
-<label><input type="radio" name="q37" value="-1" required> එකඟ නැත</label><br>
-<label><input type="radio" name="q37" value="-2" required> බලවත් ලෙස එකඟ නැත</label><br>
-</div>
-<div class="question"><p>39. හමුදාවේ සහ පොලිසියේ නිදහස සහ බලය වැඩි කළ යුතුද?</p>
-<label><input type="radio" name="q38" value="2" required> බලවත් ලෙස එකඟයි</label><br>
-<label><input type="radio" name="q38" value="1" required> එකඟයි</label><br>
-<label><input type="radio" name="q38" value="0" required> නැවත සලකා බැලිය යුතුයි</label><br>
-<label><input type="radio" name="q38" value="-1" required> එකඟ නැත</label><br>
-<label><input type="radio" name="q38" value="-2" required> බලවත් ලෙස එකඟ නැත</label><br>
-</div>
-<div class="question"><p>40. අසාමාන්‍ය ක්‍රමික නීති, ව්‍යාජ ප්‍රචාර, සහ තොරතුරු වළක්විය යුතුයි.</p>
-<label><input type="radio" name="q39" value="2" required> බලවත් ලෙස එකඟයි</label><br>
-<label><input type="radio" name="q39" value="1" required> එකඟයි</label><br>
-<label><input type="radio" name="q39" value="0" required> නැවත සලකා බැලිය යුතුයි</label><br>
-<label><input type="radio" name="q39" value="-1" required> එකඟ නැත</label><br>
-<label><input type="radio" name="q39" value="-2" required> බලවත් ලෙස එකඟ නැත</label><br>
-</div>
+  <h2>🤔 ඔබ ජෙබයියාද, ටොයියාද, මැදයියාද, බයියාද, නැත්නම් සුපර් බයියාද?</h2>
 
-  <button type="submit">පරීක්ෂා කරන්න</button>
-  </form>
+  <div class="question-box" id="questionBox">
+    <div id="question"></div>
+    <div class="labels">
+      <span>බලවත් ලෙස එකඟ නැත</span>
+      <span>නැවත සලකා බලන්න</span>
+      <span>බලවත් ලෙස එකඟයි</span>
+    </div>
+    <input type="range" min="-2" max="2" value="0" step="1" id="slider">
+    <button onclick="nextQuestion()">ඊළඟ ප්‍රශ්නය</button>
+  </div>
+
   <div class="result" id="result"></div>
 
   <script>
-    document.getElementById('quizForm').addEventListener('submit', function(e) {
-      e.preventDefault();
-      let score = 0;
-      const form = e.target;
-      for (let i = 0; i < 40; i++) {
-        score += parseInt(form['q'+i].value);
+    const questions = ['රජය ජනතාවගේ හැම ක්\u200dරියාවකටම නියාමනය නොකළ යුතුය.', 'ජනතා විරෝධතාවයන්ට අවසර දිය යුතුය, එය ජනපද සාධාරණත්වයකි.', 'විපක්ෂයේ අදහස් වළක්වන්නට කිසිදු රටකට අයිතියක් නැහැ.', 'ජාතික ආරක්ෂාව වෙනුවෙන් සීමිත මාධ්\u200dය නිදහසක් වැදගත් වේ.', 'ජනතා බලය වඩාත්ම ප්\u200dරබල විය යුතුය – නියෝජිතයන්ට නොවේ.', 'රජයේ බලය තරමක් දැඩි විය යුතුය සමාජය ආරක්ෂා කිරීම සඳහා.', 'තීරණාත්මක තත්වවලදී හමුදාවට බහුතර බලය තිබිය යුතුය.', 'විදේශිකයන්ට දේශපාලන බලපෑම් දැරීමට අවසර නොදිය යුතුය.', 'ශිෂ්ටාචාර, සාම්ප්\u200dරදාය, සහ ආගම රැකගැනීම ජාතික වගකීමකි.', 'විදේශ සංස්කෘතික බලපෑම්වලට අපේ ළමුන් අනාවරණය විය යුතු නැහැ.', 'ජාතියට අනුව විශේෂ ආරක්ෂාවක් තිබිය යුතුද? ඔව්.', 'සෑම මතභේදයකටම තර්ක සාධක සහභාගී විය යුතුය.', 'සිංහල භාෂාවටම මුල් තැන ලබා දිය යුතුය.', 'දෙමළ සහ මුස්ලිම් ජනතාවට වඩාද රටේ තීරණ ගැනීමේ බලය සිංහලයන්ට තිබිය යුතුද?', 'සිංහල බෞද්ධයන්ට විශේෂ තත්ත්වයක් තිබිය යුතුයි.', 'වඳභාවය පාලනය සහ විවාහ රේගුලාසි රජය මගින් නියාමනය කළ යුතුයි.', 'බෞද්ධ ආගම රැක ගැනීම රජයේ වගකීමකි.', 'ආගමික නීති රටේ නීතිවලට වඩා බලවත් විය යුතුය.', 'දෙවියන් පිළිබඳ විශ්වාසයක් නැති අය මිනිස් සමාජයට වියරුකමක්.', 'ආගමික නායකයන්ට දේශපාලන අදහස් පළ කළ යුතුද? ඔව්.', 'එකිනෙකාගේ ආගමට ගරු කළ යුතුද? ඔව්.', 'ආගමික නීතිවලට අනුව දඬුවම් ක්\u200dරමයන් ක්\u200dරියාත්මක කළ යුතුද?', 'ධනවත් අය වැඩි බදු ගෙවිය යුතුය.', 'සමාජයම එකට කම් කරන ආකාරයෙන් සම්පත් බෙදාගත යුතුය.', 'පෞද්ගලික ව්\u200dයාපාරික නිදහස ආර්ථිකයේ පදනම විය යුතුය.', 'විදේශ ආයෝජන වලට විශේෂ වරප්\u200dරසාද නොලැබිය යුතුය.', 'රාජ්\u200dය ව්\u200dයාපාර පෞද්ගලික ක්ෂේත්\u200dරයට පවරා යළි සංවිධානය කළ යුතුය.', 'කුඩා ව්\u200dයාපාර සඳහා වැඩි වරප්\u200dරසාද තිබිය යුතුය.', 'ගොවීන්ට රජය නියමිත මිලක් සහ ආධාර ලබා දිය යුතුයි.', 'බදු අඩු කිරීම තුළින් ආර්ථික වර්ධනය වේගවත් කළ හැකියි.', 'සිසුන්ට විචාරශීලී චින්තනය වැඩිදියුණු කිරීම වැදගත්ය.', 'පාසල්වල දරුවන්ට ආගමික ආදර්ශ පදනම් කළ යුතුයි.', 'අධ්\u200dයාපනයේ ප්\u200dරධාන අරමුණ විය යුතුය රටට උදව් කරන පුරවැසියෙකු බිහි කිරීම.', 'පෞද්ගලික පාසල්වලට සීමා තැබිය යුතුද? ඔව්.', 'රට ආරක්ෂා කිරීම සඳහා දැඩි නීති අනිවාර්ය වේ.', 'නීතියට වඩා ජාතික අභිමතය වැදගත්ය.', 'සමාජය ආරක්ෂා කිරීම සඳහා මරණ දඬුවම හෝ අධික බලය යෙදිය යුතුයි.', 'කාන්තාවන්ට සහ සුළු ජන කොටස්වලට විශේෂ ආරක්ෂාවක් තිබිය යුතුයි.', 'හමුදාවේ සහ පොලිසියේ නිදහස සහ බලය වැඩි කළ යුතුද?', 'අසාමාන්\u200dය ක්\u200dරමික නීති, ව්\u200dයාජ ප්\u200dරචාර, සහ තොරතුරු වළක්විය යුතුයි.'];
+    let current = 0;
+    let score = 0;
+
+    const qBox = document.getElementById("question");
+    const slider = document.getElementById("slider");
+    const resultBox = document.getElementById("result");
+    const questionBox = document.getElementById("questionBox");
+
+    function showQuestion() {
+      qBox.textContent = (current + 1) + ". " + questions[current];
+      slider.value = 0;
+    }
+
+    function nextQuestion() {
+      score += parseInt(slider.value);
+      current++;
+      if (current < questions.length) {
+        showQuestion();
+      } else {
+        questionBox.style.display = "none";
+        let resultText = "";
+        if (score <= -40) resultText = "🎯 ඔබ ජෙබයියා (Far Left) ය!";
+        else if (score <= -10) resultText = "🧠 ඔබ ටොයියා (Left of Centre) ය!";
+        else if (score < 10) resultText = "⚖️ ඔබ මැදයියා (Centre) ය!";
+        else if (score < 40) resultText = "🛡️ ඔබ බයියා (Right of Centre) ය!";
+        else resultText = "🔥 ඔබ සුපර් බයියා (Far Right) ය!";
+        resultBox.textContent = resultText;
+        resultBox.style.display = "block";
       }
+    }
 
-      let resultText = "";
-      if (score <= -40) resultText = "ඔබ ජෙබයියා (Far Left) ය!";
-      else if (score <= -10) resultText = "ඔබ ටොයියා (Left of Centre) ය!";
-      else if (score < 10) resultText = "ඔබ මැදයියා (Centre) ය!";
-      else if (score < 40) resultText = "ඔබ බයියා (Right of Centre) ය!";
-      else resultText = "ඔබ සුපර් බයියා (Far Right) ය!";
-
-      document.getElementById('result').innerText = "📢 " + resultText;
-    });
+    // Show first question on load
+    showQuestion();
   </script>
 </body>
 </html>
