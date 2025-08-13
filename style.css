@@ -1,0 +1,94 @@
+
+body {
+  font-family: 'Segoe UI', sans-serif;
+  padding: 16px;
+  background: #fff8e1;
+  color: #212121;
+  text-align: center;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+h2 {
+  font-size: 22px;
+  color: #ff6f00;
+  margin-bottom: 20px;
+  padding: 0 10px;
+}
+.question-box {
+  margin: 10px auto;
+  background: #fff3e0;
+  padding: 16px;
+  border-radius: 10px;
+  box-shadow: 0 0 6px rgba(0,0,0,0.1);
+  max-width: 95%;
+}
+#question {
+  font-size: 18px;
+  margin-bottom: 20px;
+  padding: 0 8px;
+}
+input[type=range] {
+  width: 100%;
+  margin: 20px 0;
+}
+.labels {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  padding: 0 5px;
+}
+button {
+  background-color: #ff5722;
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  font-size: 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  margin-top: 15px;
+  width: 100%;
+  max-width: 280px;
+}
+.result {
+  font-size: 20px;
+  font-weight: bold;
+  color: #1b5e20;
+  margin-top: 30px;
+  padding: 20px;
+  background: #c8e6c9;
+  border-radius: 10px;
+  display: none;
+  max-width: 95%;
+  margin-left: auto;
+  margin-right: auto;
+}
+.share-buttons {
+  margin-top: 20px;
+}
+.share-buttons a {
+  display: inline-block;
+  margin: 5px 10px;
+  padding: 10px 15px;
+  border-radius: 6px;
+  text-decoration: none;
+  color: white;
+  font-size: 14px;
+}
+.whatsapp { background-color: #25d366; }
+.facebook { background-color: #1877f2; }
+#progressBarContainer {
+  width: 100%;
+  background-color: #e0e0e0;
+  height: 14px;
+  border-radius: 8px;
+  overflow: hidden;
+  margin-bottom: 20px;
+}
+#progressBar {
+  height: 100%;
+  width: 0%;
+  background-color: #ff9800;
+  transition: width 0.4s ease;
+}
